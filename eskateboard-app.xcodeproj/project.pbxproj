@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		49ED22EC2BB372BC00CF5B81 /* eskateboard_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ED22EB2BB372BC00CF5B81 /* eskateboard_appApp.swift */; };
+		49ED22EE2BB372BC00CF5B81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ED22ED2BB372BC00CF5B81 /* ContentView.swift */; };
+		49ED22F02BB372BE00CF5B81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49ED22EF2BB372BE00CF5B81 /* Assets.xcassets */; };
+		49ED22F32BB372BE00CF5B81 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49ED22F22BB372BE00CF5B81 /* Preview Assets.xcassets */; };
+		49ED22FD2BB372BE00CF5B81 /* eskateboard_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ED22FC2BB372BE00CF5B81 /* eskateboard_appTests.swift */; };
+		49ED23072BB372BE00CF5B81 /* eskateboard_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ED23062BB372BE00CF5B81 /* eskateboard_appUITests.swift */; };
+		49ED23092BB372BE00CF5B81 /* eskateboard_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ED23082BB372BE00CF5B81 /* eskateboard_appUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		49ED22F92BB372BE00CF5B81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49ED22E02BB372BC00CF5B81 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49ED22E72BB372BC00CF5B81;
+			remoteInfo = "eskateboard-app";
+		};
+		49ED23032BB372BE00CF5B81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 49ED22E02BB372BC00CF5B81 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 49ED22E72BB372BC00CF5B81;
+			remoteInfo = "eskateboard-app";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		49ED22E82BB372BC00CF5B81 /* eskateboard-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eskateboard-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49ED22EB2BB372BC00CF5B81 /* eskateboard_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eskateboard_appApp.swift; sourceTree = "<group>"; };
+		49ED22ED2BB372BC00CF5B81 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		49ED22EF2BB372BE00CF5B81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		49ED22F22BB372BE00CF5B81 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		49ED22F82BB372BE00CF5B81 /* eskateboard-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "eskateboard-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49ED22FC2BB372BE00CF5B81 /* eskateboard_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eskateboard_appTests.swift; sourceTree = "<group>"; };
+		49ED23022BB372BE00CF5B81 /* eskateboard-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "eskateboard-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49ED23062BB372BE00CF5B81 /* eskateboard_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eskateboard_appUITests.swift; sourceTree = "<group>"; };
+		49ED23082BB372BE00CF5B81 /* eskateboard_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eskateboard_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		49ED22E52BB372BC00CF5B81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49ED22F52BB372BE00CF5B81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49ED22FF2BB372BE00CF5B81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		49ED22DF2BB372BC00CF5B81 = {
+			isa = PBXGroup;
+			children = (
+				49ED22EA2BB372BC00CF5B81 /* eskateboard-app */,
+				49ED22FB2BB372BE00CF5B81 /* eskateboard-appTests */,
+				49ED23052BB372BE00CF5B81 /* eskateboard-appUITests */,
+				49ED22E92BB372BC00CF5B81 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		49ED22E92BB372BC00CF5B81 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				49ED22E82BB372BC00CF5B81 /* eskateboard-app.app */,
+				49ED22F82BB372BE00CF5B81 /* eskateboard-appTests.xctest */,
+				49ED23022BB372BE00CF5B81 /* eskateboard-appUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		49ED22EA2BB372BC00CF5B81 /* eskateboard-app */ = {
+			isa = PBXGroup;
+			children = (
+				49ED22EB2BB372BC00CF5B81 /* eskateboard_appApp.swift */,
+				49ED22ED2BB372BC00CF5B81 /* ContentView.swift */,
+				49ED22EF2BB372BE00CF5B81 /* Assets.xcassets */,
+				49ED22F12BB372BE00CF5B81 /* Preview Content */,
+			);
+			path = "eskateboard-app";
+			sourceTree = "<group>";
+		};
+		49ED22F12BB372BE00CF5B81 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				49ED22F22BB372BE00CF5B81 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		49ED22FB2BB372BE00CF5B81 /* eskateboard-appTests */ = {
+			isa = PBXGroup;
+			children = (
+				49ED22FC2BB372BE00CF5B81 /* eskateboard_appTests.swift */,
+			);
+			path = "eskateboard-appTests";
+			sourceTree = "<group>";
+		};
+		49ED23052BB372BE00CF5B81 /* eskateboard-appUITests */ = {
+			isa = PBXGroup;
+			children = (
+				49ED23062BB372BE00CF5B81 /* eskateboard_appUITests.swift */,
+				49ED23082BB372BE00CF5B81 /* eskateboard_appUITestsLaunchTests.swift */,
+			);
+			path = "eskateboard-appUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		49ED22E72BB372BC00CF5B81 /* eskateboard-app */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49ED230C2BB372BE00CF5B81 /* Build configuration list for PBXNativeTarget "eskateboard-app" */;
+			buildPhases = (
+				49ED22E42BB372BC00CF5B81 /* Sources */,
+				49ED22E52BB372BC00CF5B81 /* Frameworks */,
+				49ED22E62BB372BC00CF5B81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "eskateboard-app";
+			productName = "eskateboard-app";
+			productReference = 49ED22E82BB372BC00CF5B81 /* eskateboard-app.app */;
+			productType = "com.apple.product-type.application";
+		};
+		49ED22F72BB372BE00CF5B81 /* eskateboard-appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49ED230F2BB372BE00CF5B81 /* Build configuration list for PBXNativeTarget "eskateboard-appTests" */;
+			buildPhases = (
+				49ED22F42BB372BE00CF5B81 /* Sources */,
+				49ED22F52BB372BE00CF5B81 /* Frameworks */,
+				49ED22F62BB372BE00CF5B81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				49ED22FA2BB372BE00CF5B81 /* PBXTargetDependency */,
+			);
+			name = "eskateboard-appTests";
+			productName = "eskateboard-appTests";
+			productReference = 49ED22F82BB372BE00CF5B81 /* eskateboard-appTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		49ED23012BB372BE00CF5B81 /* eskateboard-appUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 49ED23122BB372BE00CF5B81 /* Build configuration list for PBXNativeTarget "eskateboard-appUITests" */;
+			buildPhases = (
+				49ED22FE2BB372BE00CF5B81 /* Sources */,
+				49ED22FF2BB372BE00CF5B81 /* Frameworks */,
+				49ED23002BB372BE00CF5B81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				49ED23042BB372BE00CF5B81 /* PBXTargetDependency */,
+			);
+			name = "eskateboard-appUITests";
+			productName = "eskateboard-appUITests";
+			productReference = 49ED23022BB372BE00CF5B81 /* eskateboard-appUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		49ED22E02BB372BC00CF5B81 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					49ED22E72BB372BC00CF5B81 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					49ED22F72BB372BE00CF5B81 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 49ED22E72BB372BC00CF5B81;
+					};
+					49ED23012BB372BE00CF5B81 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 49ED22E72BB372BC00CF5B81;
+					};
+				};
+			};
+			buildConfigurationList = 49ED22E32BB372BC00CF5B81 /* Build configuration list for PBXProject "eskateboard-app" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 49ED22DF2BB372BC00CF5B81;
+			productRefGroup = 49ED22E92BB372BC00CF5B81 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				49ED22E72BB372BC00CF5B81 /* eskateboard-app */,
+				49ED22F72BB372BE00CF5B81 /* eskateboard-appTests */,
+				49ED23012BB372BE00CF5B81 /* eskateboard-appUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		49ED22E62BB372BC00CF5B81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49ED22F32BB372BE00CF5B81 /* Preview Assets.xcassets in Resources */,
+				49ED22F02BB372BE00CF5B81 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49ED22F62BB372BE00CF5B81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49ED23002BB372BE00CF5B81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		49ED22E42BB372BC00CF5B81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49ED22EE2BB372BC00CF5B81 /* ContentView.swift in Sources */,
+				49ED22EC2BB372BC00CF5B81 /* eskateboard_appApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49ED22F42BB372BE00CF5B81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49ED22FD2BB372BE00CF5B81 /* eskateboard_appTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		49ED22FE2BB372BE00CF5B81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49ED23092BB372BE00CF5B81 /* eskateboard_appUITestsLaunchTests.swift in Sources */,
+				49ED23072BB372BE00CF5B81 /* eskateboard_appUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		49ED22FA2BB372BE00CF5B81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49ED22E72BB372BC00CF5B81 /* eskateboard-app */;
+			targetProxy = 49ED22F92BB372BE00CF5B81 /* PBXContainerItemProxy */;
+		};
+		49ED23042BB372BE00CF5B81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 49ED22E72BB372BC00CF5B81 /* eskateboard-app */;
+			targetProxy = 49ED23032BB372BE00CF5B81 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		49ED230A2BB372BE00CF5B81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		49ED230B2BB372BE00CF5B81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		49ED230D2BB372BE00CF5B81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"eskateboard-app/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "electrium.eskateboard-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		49ED230E2BB372BE00CF5B81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"eskateboard-app/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "electrium.eskateboard-app";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		49ED23102BB372BE00CF5B81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "electrium.eskateboard-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eskateboard-app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/eskateboard-app";
+			};
+			name = Debug;
+		};
+		49ED23112BB372BE00CF5B81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "electrium.eskateboard-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eskateboard-app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/eskateboard-app";
+			};
+			name = Release;
+		};
+		49ED23132BB372BE00CF5B81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "electrium.eskateboard-appUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "eskateboard-app";
+			};
+			name = Debug;
+		};
+		49ED23142BB372BE00CF5B81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "electrium.eskateboard-appUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "eskateboard-app";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		49ED22E32BB372BC00CF5B81 /* Build configuration list for PBXProject "eskateboard-app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49ED230A2BB372BE00CF5B81 /* Debug */,
+				49ED230B2BB372BE00CF5B81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49ED230C2BB372BE00CF5B81 /* Build configuration list for PBXNativeTarget "eskateboard-app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49ED230D2BB372BE00CF5B81 /* Debug */,
+				49ED230E2BB372BE00CF5B81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49ED230F2BB372BE00CF5B81 /* Build configuration list for PBXNativeTarget "eskateboard-appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49ED23102BB372BE00CF5B81 /* Debug */,
+				49ED23112BB372BE00CF5B81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		49ED23122BB372BE00CF5B81 /* Build configuration list for PBXNativeTarget "eskateboard-appUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				49ED23132BB372BE00CF5B81 /* Debug */,
+				49ED23142BB372BE00CF5B81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 49ED22E02BB372BC00CF5B81 /* Project object */;
+}
