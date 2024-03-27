@@ -44,6 +44,7 @@
 		49ED23022BB372BE00CF5B81 /* eskateboard-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "eskateboard-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49ED23062BB372BE00CF5B81 /* eskateboard_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eskateboard_appUITests.swift; sourceTree = "<group>"; };
 		49ED23082BB372BE00CF5B81 /* eskateboard_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eskateboard_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		49ED23152BB376C700CF5B81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +95,7 @@
 		49ED22EA2BB372BC00CF5B81 /* eskateboard-app */ = {
 			isa = PBXGroup;
 			children = (
+				49ED23152BB376C700CF5B81 /* Info.plist */,
 				49ED22EB2BB372BC00CF5B81 /* eskateboard_appApp.swift */,
 				49ED22ED2BB372BC00CF5B81 /* ContentView.swift */,
 				49ED22EF2BB372BE00CF5B81 /* Assets.xcassets */,
@@ -422,8 +424,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"eskateboard-app/Preview Content\"";
+				DEVELOPMENT_TEAM = 4BNQV45JHU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "eskateboard-app/Info.plist";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Allow for bluetooth use";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Please allow using bluetooth for discovering peripherals.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -450,8 +456,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"eskateboard-app/Preview Content\"";
+				DEVELOPMENT_TEAM = 4BNQV45JHU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "eskateboard-app/Info.plist";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Allow for bluetooth use";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Please allow using bluetooth for discovering peripherals.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
