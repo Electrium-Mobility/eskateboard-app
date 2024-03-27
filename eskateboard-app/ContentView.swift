@@ -87,7 +87,7 @@ extension BluetoothViewModel: CBPeripheralDelegate {
         enum BluetoothCharacteristicMap: String, CaseIterable {
           case battery = "EC76C264-0BC4-4EAA-B32E-01C723E9CFE3"
           case distanceTravelled = "ABC4AF9E-7220-45E5-BC87-137D35DAFB4D"
-            case speed = "B5FA25E0-884E-475A-9A70-A286B88DF9F5"
+          case speed = "B5FA25E0-884E-475A-9A70-A286B88DF9F5"
         }
             if data.count == MemoryLayout<Float>.size {
                 let floatValue = data.withUnsafeBytes { $0.load(as: Float.self) }
@@ -101,11 +101,6 @@ extension BluetoothViewModel: CBPeripheralDelegate {
                     skateboardData.speed = floatValue
                 }
             }
-        
-        // Convert to a string if needed
-        if let string = String(data: data, encoding: .utf8) {
-            print("String representation: \(string)")
-        }
     }
 }
 
