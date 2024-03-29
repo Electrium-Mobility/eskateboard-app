@@ -10,7 +10,7 @@ import CoreBluetooth
 
 struct SkateboardData {
     var speed: Float // in km/h
-    var distanceLeft: Float // in km
+    var distanceRemaining: Float // in km
     var battery: Float // as a percentage
     var distanceTravelled: Float // revolutions per minute
 }
@@ -20,7 +20,7 @@ class BluetoothViewModel : NSObject, ObservableObject {
     @Published var peripherals: [CBPeripheral] = []
     @Published private(set) var peripheralNames: [String] = []
     @Published var isConnected = false // Track connection status
-    @Published var skateboardData = SkateboardData(speed: 0, distanceLeft: 0, battery: 100, distanceTravelled: 0)
+    @Published var skateboardData = SkateboardData(speed: 0, distanceRemaining: 0, battery: 100, distanceTravelled: 0)
 
     override init() {
         super.init()
@@ -86,8 +86,9 @@ extension BluetoothViewModel: CBPeripheralDelegate {
         // Handle the incoming data
         enum BluetoothCharacteristicMap: String, CaseIterable {
           case battery = "EC76C264-0BC4-4EAA-B32E-01C723E9CFE3"
-          case distanceTravelled = "ABC4AF9E-7220-45E5-BC87-137D35DAFB4D"
+          case distanceRemaining = "ABC4AF9E-7220-45E5-BC87-137D35DAFB4D"
           case speed = "B5FA25E0-884E-475A-9A70-A286B88DF9F5"
+          case distanceTravelled = "6043959F-C355-40C3-A069-9E511F335793"
         }
             if data.count == MemoryLayout<Float>.size {
                 let floatValue = data.withUnsafeBytes { $0.load(as: Float.self) }
@@ -99,6 +100,8 @@ extension BluetoothViewModel: CBPeripheralDelegate {
                 }
                 else if characteristic.uuid.uuidString == BluetoothCharacteristicMap.speed.rawValue {
                     skateboardData.speed = floatValue
+                } else if characteristic.uuid.uuidString == BluetoothCharacteristicMap.distanceRemaining.rawValue {
+                    skateboardData.distanceRemaining = floatValue
                 }
             }
     }
@@ -125,7 +128,7 @@ struct DisconnectedView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Text("Connect to the Skateboard")
-                        .font(.system(size: 25))
+                        .font(.system(size: 28)).bold().padding(.top, 60)
                 }
             }
         }
@@ -141,13 +144,13 @@ struct ConnectedView: View {
       var text: String
     }
     var body: some View {
-        VStack {
-          ForEach([TextItem(text: "Speed: \(bluetoothViewModel.skateboardData.speed) m/s"),
-                  TextItem(text: "Distance Travelled: \(bluetoothViewModel.skateboardData.distanceTravelled) m"),
-                  TextItem(text: "Battery: \(String(format: "%.2f", bluetoothViewModel.skateboardData.battery))%"),
-                   TextItem(text: "Distance Left: \(bluetoothViewModel.skateboardData.distanceLeft) m")]) { item in
-            Text(item.text)
-              .font(.system(size: 26))
+        VStack(spacing: 20) {
+            ForEach([TextItem(text: "Speed:                  \(String(format: "%.2f", bluetoothViewModel.skateboardData.speed)) m/s"),
+                     TextItem(text: "Distance Travelled:      \(String(format: "%.2f", bluetoothViewModel.skateboardData.distanceTravelled)) m"),
+                  TextItem(text: "Battery:                      \(String(format: "%.2f", bluetoothViewModel.skateboardData.battery))%"),
+                     TextItem(text: "Distance Remaining:   \(Int(round(bluetoothViewModel.skateboardData.distanceRemaining))) m")]) {
+                item in Text(item.text)
+                    .font(.system(size: 26)).frame(maxWidth: .infinity, alignment: .leading).padding(.leading, 50)
           }
         }
     }
