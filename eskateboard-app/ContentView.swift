@@ -232,14 +232,17 @@ struct ConnectedView: View {
       var id = UUID() // Create a unique identifier for each item
       var text: String
     }
+    @State private var fakebattery:Double = 5.0;
     var body: some View {
         VStack(spacing:50) {
             Speedometer()
+            BatteryView(battery: .constant(fakebattery), outline: Color.white)
+            Slider(value: $fakebattery,in:0.0...100.0).tint(.blue).padding(.top,-70)
             VStack(spacing: 20) {
                 ForEach([
 //                    TextItem(text: "Speed:                  \(String(format: "%.2f", bluetoothViewModel.skateboardData.speed)) km/h"),
                          TextItem(text: "Distance Travelled:      \(String(format: "%.2f", bluetoothViewModel.skateboardData.distanceTravelled)) km"),
-                      TextItem(text: "Battery:                      \(String(format: "%.2f", bluetoothViewModel.skateboardData.battery))%"),
+//                      TextItem(text: "Battery:                      \(String(format: "%.2f", bluetoothViewModel.skateboardData.battery))%"),
                          TextItem(text: "Distance Remaining:   \(Int(round(bluetoothViewModel.skateboardData.distanceRemaining))) km")]) {
                     item in Text(item.text)
                         .font(.system(size: 26)).frame(maxWidth: .infinity, alignment: .leading).padding(.leading, 50)
