@@ -243,7 +243,7 @@ struct ConnectedView: View {
           }
         }.alert(isPresented: $bluetoothViewModel.showAlert) {
             Alert(
-                title: Text(bluetoothViewModel.errorObject?.type.rawValue ?? "No errro"),
+                title: Text(bluetoothViewModel.errorObject?.type.rawValue ?? "No error"),
                 message: Text(bluetoothViewModel.errorObject?.message ?? "No error"),
                 dismissButton: .default(Text("OK")) {
                     if bluetoothViewModel.errorObject?.type == ErrorType.error {
