@@ -18,13 +18,26 @@ struct SkateboardData {
 class BluetoothViewModel : NSObject, ObservableObject {
     private var centralManager: CBCentralManager?
     private var connectedPeripheral: CBPeripheral?
-
+    private var receivedCharacteristicsUUIDs: Set<String> = []
     @Published var peripherals: [CBPeripheral] = []
     @Published private(set) var peripheralNames: [String] = []
     @Published var isConnected = false // Track connection status
     @Published var skateboardData = SkateboardData(speed: 0, distanceRemaining: 0, battery: 100, distanceTravelled: 0)
     @Published var showAlert = false
     @Published var errorMessage: String = ""
+    let expectedCharacteristicsUUIDs: Set<String> = [
+        BluetoothCharacteristicMap.battery.rawValue,
+        BluetoothCharacteristicMap.distanceRemaining.rawValue,
+        BluetoothCharacteristicMap.speed.rawValue,
+        BluetoothCharacteristicMap.distanceTravelled.rawValue
+    ]
+    enum BluetoothCharacteristicMap: String, CaseIterable {
+        case battery = "EC76C264-0BC4-4EAA-B32E-01C723E9CFE3"
+        case distanceRemaining = "ABC4AF9E-7220-45E5-BC87-137D35DAFB4D"
+        case speed = "B5FA25E0-884E-475A-9A70-A286B88DF9F5"
+        case distanceTravelled = "6043959F-C355-40C3-A069-9E511F335793"
+    }
+
     override init() {
         super.init()
         self.centralManager = CBCentralManager(delegate: self, queue: .main)
@@ -77,13 +90,23 @@ extension BluetoothViewModel: CBCentralManagerDelegate {
             self.peripheralNames.append(peripheral.name ?? "unnamed device")
         }
     }
-
+    func checkCharacteristicsAfterConnection() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) { // Adjust the timeout duration as needed
+            let unexpectedUUIDs = self.receivedCharacteristicsUUIDs.subtracting(self.expectedCharacteristicsUUIDs)
+            if !unexpectedUUIDs.isEmpty || self.receivedCharacteristicsUUIDs.isEmpty {
+                self.errorMessage = "Connected to an incompatible device. Missing characteristics."
+                self.showAlert = true
+            }
+        }
+    }
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("Connected to \(peripheral.name ?? "a device")")
         // Handle successful connection, such as stopping scanning and discovering services
         self.isConnected = true
         peripheral.delegate = self
         peripheral.discoverServices(nil) // Pass nil to discover all services; specify UUIDs to find specific ones.
+        self.receivedCharacteristicsUUIDs = []
+        checkCharacteristicsAfterConnection()
     }
 
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
@@ -116,13 +139,8 @@ extension BluetoothViewModel: CBPeripheralDelegate {
     // Called when there's a notification/indication of a characteristic's value
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         guard let data = characteristic.value else { return }
-        // Handle the incoming data
-        enum BluetoothCharacteristicMap: String, CaseIterable {
-            case battery = "EC76C264-0BC4-4EAA-B32E-01C723E9CFE3"
-            case distanceRemaining = "ABC4AF9E-7220-45E5-BC87-137D35DAFB4D"
-            case speed = "B5FA25E0-884E-475A-9A70-A286B88DF9F5"
-            case distanceTravelled = "6043959F-C355-40C3-A069-9E511F335793"
-        }
+        self.receivedCharacteristicsUUIDs.insert(characteristic.uuid.uuidString)
+
         enum DataError: Error {
             case invalidSize
         }
