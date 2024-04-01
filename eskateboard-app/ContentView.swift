@@ -7,7 +7,7 @@
 
 import SwiftUI
 import CoreBluetooth
-
+    
 struct SkateboardData {
     var speed: Float // in km/h
     var distanceRemaining: Float // in km
@@ -116,7 +116,7 @@ extension BluetoothViewModel: CBCentralManagerDelegate {
         peripheral.delegate = self
         peripheral.discoverServices(nil) // Pass nil to discover all services; specify UUIDs to find specific ones.
         self.receivedCharacteristicsUUIDs = []
-        checkCharacteristicsAfterConnection()
+//        checkCharacteristicsAfterConnection()
     }
 
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
@@ -233,24 +233,27 @@ struct ConnectedView: View {
       var text: String
     }
     var body: some View {
-        VStack(spacing: 20) {
-            ForEach([TextItem(text: "Speed:                  \(String(format: "%.2f", bluetoothViewModel.skateboardData.speed)) m/s"),
-                     TextItem(text: "Distance Travelled:      \(String(format: "%.2f", bluetoothViewModel.skateboardData.distanceTravelled)) m"),
-                  TextItem(text: "Battery:                      \(String(format: "%.2f", bluetoothViewModel.skateboardData.battery))%"),
-                     TextItem(text: "Distance Remaining:   \(Int(round(bluetoothViewModel.skateboardData.distanceRemaining))) m")]) {
-                item in Text(item.text)
-                    .font(.system(size: 26)).frame(maxWidth: .infinity, alignment: .leading).padding(.leading, 50)
-          }
-        }.alert(isPresented: $bluetoothViewModel.showAlert) {
-            Alert(
-                title: Text(bluetoothViewModel.errorObject?.type.rawValue ?? "No error"),
-                message: Text(bluetoothViewModel.errorObject?.message ?? "No error"),
-                dismissButton: .default(Text("OK")) {
-                    if bluetoothViewModel.errorObject?.type == ErrorType.error {
-                        bluetoothViewModel.disconnectPeripheral()
+        VStack(spacing:50) {
+            VStack(spacing: 20) {
+                ForEach([TextItem(text: "Speed:                  \(String(format: "%.2f", bluetoothViewModel.skateboardData.speed)) m/s"),
+                         TextItem(text: "Distance Travelled:      \(String(format: "%.2f", bluetoothViewModel.skateboardData.distanceTravelled)) m"),
+                      TextItem(text: "Battery:                      \(String(format: "%.2f", bluetoothViewModel.skateboardData.battery))%"),
+                         TextItem(text: "Distance Remaining:   \(Int(round(bluetoothViewModel.skateboardData.distanceRemaining))) m")]) {
+                    item in Text(item.text)
+                        .font(.system(size: 26)).frame(maxWidth: .infinity, alignment: .leading).padding(.leading, 50)
+              }
+            }.alert(isPresented: $bluetoothViewModel.showAlert) {
+                Alert(
+                    title: Text(bluetoothViewModel.errorObject?.type.rawValue ?? "No error"),
+                    message: Text(bluetoothViewModel.errorObject?.message ?? "No error"),
+                    dismissButton: .default(Text("OK")) {
+                        if bluetoothViewModel.errorObject?.type == ErrorType.error {
+                            bluetoothViewModel.disconnectPeripheral()
+                        }
                     }
-                }
-            )
+                )
+            }
+            Speedometer()
         }
     }
 }
@@ -277,5 +280,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ConnectedView(bluetoothViewModel: BluetoothViewModel())
 }

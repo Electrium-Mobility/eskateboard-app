@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		499D59CB2BBA562C00E1C432 /* Speedometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499D59CA2BBA562C00E1C432 /* Speedometer.swift */; };
 		49ED22EC2BB372BC00CF5B81 /* eskateboard_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ED22EB2BB372BC00CF5B81 /* eskateboard_appApp.swift */; };
 		49ED22EE2BB372BC00CF5B81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49ED22ED2BB372BC00CF5B81 /* ContentView.swift */; };
 		49ED22F02BB372BE00CF5B81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49ED22EF2BB372BE00CF5B81 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		499D59CA2BBA562C00E1C432 /* Speedometer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speedometer.swift; sourceTree = "<group>"; };
 		49ED22E82BB372BC00CF5B81 /* eskateboard-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eskateboard-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49ED22EB2BB372BC00CF5B81 /* eskateboard_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eskateboard_appApp.swift; sourceTree = "<group>"; };
 		49ED22ED2BB372BC00CF5B81 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				49ED22ED2BB372BC00CF5B81 /* ContentView.swift */,
 				49ED22EF2BB372BE00CF5B81 /* Assets.xcassets */,
 				49ED22F12BB372BE00CF5B81 /* Preview Content */,
+				499D59CA2BBA562C00E1C432 /* Speedometer.swift */,
 			);
 			path = "eskateboard-app";
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				499D59CB2BBA562C00E1C432 /* Speedometer.swift in Sources */,
 				49ED22EE2BB372BC00CF5B81 /* ContentView.swift in Sources */,
 				49ED22EC2BB372BC00CF5B81 /* eskateboard_appApp.swift in Sources */,
 			);
