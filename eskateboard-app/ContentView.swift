@@ -238,30 +238,41 @@ struct ConnectedView: View {
             Speedometer()
             BatteryView(battery: .constant(fakebattery), outline: Color.white)
             Slider(value: $fakebattery,in:0.0...100.0).tint(.blue).padding(.top,-70)
-            VStack(spacing: 20) {
-                ForEach([
-//                    TextItem(text: "Speed:                  \(String(format: "%.2f", bluetoothViewModel.skateboardData.speed)) km/h"),
-                         TextItem(text: "Distance Travelled:      \(String(format: "%.2f", bluetoothViewModel.skateboardData.distanceTravelled)) km"),
-//                      TextItem(text: "Battery:                      \(String(format: "%.2f", bluetoothViewModel.skateboardData.battery))%"),
-                         TextItem(text: "Distance Remaining:   \(Int(round(bluetoothViewModel.skateboardData.distanceRemaining))) km")]) {
-                    item in Text(item.text)
-                        .font(.system(size: 26)).frame(maxWidth: .infinity, alignment: .leading).padding(.leading, 50)
-              }
-            }.alert(isPresented: $bluetoothViewModel.showAlert) {
-                Alert(
-                    title: Text(bluetoothViewModel.errorObject?.type.rawValue ?? "No error"),
-                    message: Text(bluetoothViewModel.errorObject?.message ?? "No error"),
-                    dismissButton: .default(Text("OK")) {
-                        if bluetoothViewModel.errorObject?.type == ErrorType.error {
-                            bluetoothViewModel.disconnectPeripheral()
-                        }
-                    }
-                )
+            
+            VStack(alignment: .leading, spacing: 15){
+                HStack {
+                    Text("Distance Travelled:").bold().font(.system(size: 26))
+                    Text("\(String(format: "%.2f", bluetoothViewModel.skateboardData.distanceTravelled)) km")
+                }
+                HStack {
+                    Text("Distance Remaining:").bold().font(.system(size: 26))
+                    Text("\(String(format: "%.2f", bluetoothViewModel.skateboardData.distanceTravelled)) km")
+                }
             }
             
+//            VStack(spacing: 20) {
+//                ForEach([
+////                    TextItem(text: "Speed:                  \(String(format: "%.2f", bluetoothViewModel.skateboardData.speed)) km/h"),
+//                         TextItem(text: "Distance Travelled:        \(String(format: "%.2f", bluetoothViewModel.skateboardData.distanceTravelled)) km"),
+////                      TextItem(text: "Battery:                      \(String(format: "%.2f", bluetoothViewModel.skateboardData.battery))%"),
+//                         TextItem(text: "Distance Remaining:            \(Int(round(bluetoothViewModel.skateboardData.distanceRemaining))) km")]) {
+//                    item in Text(item.text)
+//                        .font(.system(size: 26)).frame(maxWidth: .infinity, alignment: .leading).padding(.leading, 20)
+//              }
+        }.alert(isPresented: $bluetoothViewModel.showAlert) {
+            Alert(
+                title: Text(bluetoothViewModel.errorObject?.type.rawValue ?? "No error"),
+                message: Text(bluetoothViewModel.errorObject?.message ?? "No error"),
+                dismissButton: .default(Text("OK")) {
+                    if bluetoothViewModel.errorObject?.type == ErrorType.error {
+                        bluetoothViewModel.disconnectPeripheral()
+                    }
+                }
+            )
         }
     }
 }
+
 
 struct ContentView: View {
     @ObservedObject private var bluetoothViewModel = BluetoothViewModel()
