@@ -15,7 +15,7 @@ struct Speedometer : View {
     var body : some View  {
         VStack {
             Meter(currentSpeed: $currentSpeed)
-            Text(String(currentSpeed)+" m/s")
+            Text(String(currentSpeed)+" km/h").padding(.vertical, 50).font(.system(size: 20))
             HStack(spacing:25){
                 Button(action: {
                     

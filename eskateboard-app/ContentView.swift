@@ -234,11 +234,13 @@ struct ConnectedView: View {
     }
     var body: some View {
         VStack(spacing:50) {
+            Speedometer()
             VStack(spacing: 20) {
-                ForEach([TextItem(text: "Speed:                  \(String(format: "%.2f", bluetoothViewModel.skateboardData.speed)) m/s"),
-                         TextItem(text: "Distance Travelled:      \(String(format: "%.2f", bluetoothViewModel.skateboardData.distanceTravelled)) m"),
+                ForEach([
+//                    TextItem(text: "Speed:                  \(String(format: "%.2f", bluetoothViewModel.skateboardData.speed)) km/h"),
+                         TextItem(text: "Distance Travelled:      \(String(format: "%.2f", bluetoothViewModel.skateboardData.distanceTravelled)) km"),
                       TextItem(text: "Battery:                      \(String(format: "%.2f", bluetoothViewModel.skateboardData.battery))%"),
-                         TextItem(text: "Distance Remaining:   \(Int(round(bluetoothViewModel.skateboardData.distanceRemaining))) m")]) {
+                         TextItem(text: "Distance Remaining:   \(Int(round(bluetoothViewModel.skateboardData.distanceRemaining))) km")]) {
                     item in Text(item.text)
                         .font(.system(size: 26)).frame(maxWidth: .infinity, alignment: .leading).padding(.leading, 50)
               }
@@ -253,7 +255,7 @@ struct ConnectedView: View {
                     }
                 )
             }
-            Speedometer()
+            
         }
     }
 }
