@@ -17,18 +17,51 @@ struct SkateboardData {
 
 class BluetoothViewModel : NSObject, ObservableObject {
     private var centralManager: CBCentralManager?
+    private var connectedPeripheral: CBPeripheral?
+
     @Published var peripherals: [CBPeripheral] = []
     @Published private(set) var peripheralNames: [String] = []
     @Published var isConnected = false // Track connection status
     @Published var skateboardData = SkateboardData(speed: 0, distanceRemaining: 0, battery: 100, distanceTravelled: 0)
-
+    @Published var showAlert = false
+    @Published var errorMessage: String = ""
     override init() {
         super.init()
         self.centralManager = CBCentralManager(delegate: self, queue: .main)
+        
     }
     func connectToPeripheral(_ peripheral: CBPeripheral) {
         self.centralManager?.connect(peripheral, options: nil)
+        self.connectedPeripheral = peripheral
     }
+    
+    func disconnectPeripheral(){
+        guard let peripheral = connectedPeripheral else {
+                   print("No connected peripheral to disconnect.")
+                   return
+               }
+       if peripheral.state == .connected {
+           self.centralManager?.cancelPeripheralConnection(peripheral)
+       }
+    }
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+            // Update your isConnected flag and handle any cleanup
+            self.isConnected = false
+           self.connectedPeripheral = nil
+            if let error = error {
+                print("Disconnected from \(peripheral.name ?? "") due to error: \(error.localizedDescription)")
+            } else {
+                print("Disconnected from \(peripheral.name ?? "") successfully.")
+            }
+
+            // Call any cleanup or UI update methods here
+            // For example, call a method to reset UI elements or data models related to the connected device
+            onDisconnected?()
+        }
+
+        // Method to be called when disconnected successfully
+        var onDisconnected: (() -> Void)?
+
     var onConnercted: (() -> Void)?
 }
 
@@ -85,25 +118,40 @@ extension BluetoothViewModel: CBPeripheralDelegate {
         guard let data = characteristic.value else { return }
         // Handle the incoming data
         enum BluetoothCharacteristicMap: String, CaseIterable {
-          case battery = "EC76C264-0BC4-4EAA-B32E-01C723E9CFE3"
-          case distanceRemaining = "ABC4AF9E-7220-45E5-BC87-137D35DAFB4D"
-          case speed = "B5FA25E0-884E-475A-9A70-A286B88DF9F5"
-          case distanceTravelled = "6043959F-C355-40C3-A069-9E511F335793"
+            case battery = "EC76C264-0BC4-4EAA-B32E-01C723E9CFE3"
+            case distanceRemaining = "ABC4AF9E-7220-45E5-BC87-137D35DAFB4D"
+            case speed = "B5FA25E0-884E-475A-9A70-A286B88DF9F5"
+            case distanceTravelled = "6043959F-C355-40C3-A069-9E511F335793"
         }
+        enum DataError: Error {
+            case invalidSize
+        }
+        do {
             if data.count == MemoryLayout<Float>.size {
                 let floatValue = data.withUnsafeBytes { $0.load(as: Float.self) }
+                
                 print("UUID: \(characteristic.uuid) Float value: \(floatValue)")
-                if characteristic.uuid.uuidString == BluetoothCharacteristicMap.battery.rawValue {
+                
+                // Update corresponding skateboardData properties based on UUID
+                switch characteristic.uuid.uuidString {
+                case BluetoothCharacteristicMap.battery.rawValue:
                     skateboardData.battery = floatValue
-                } else if characteristic.uuid.uuidString == BluetoothCharacteristicMap.distanceTravelled.rawValue {
+                case BluetoothCharacteristicMap.distanceTravelled.rawValue:
                     skateboardData.distanceTravelled = floatValue
-                }
-                else if characteristic.uuid.uuidString == BluetoothCharacteristicMap.speed.rawValue {
+                case BluetoothCharacteristicMap.speed.rawValue:
                     skateboardData.speed = floatValue
-                } else if characteristic.uuid.uuidString == BluetoothCharacteristicMap.distanceRemaining.rawValue {
+                case BluetoothCharacteristicMap.distanceRemaining.rawValue:
                     skateboardData.distanceRemaining = floatValue
+                default:
+                    break  // Handle other UUIDs if needed
                 }
+            } else {
+                throw DataError.invalidSize // Manually throw an error
             }
+        } catch {
+            self.errorMessage = error.localizedDescription
+            self.showAlert = true
+        }
     }
 }
 
@@ -152,6 +200,14 @@ struct ConnectedView: View {
                 item in Text(item.text)
                     .font(.system(size: 26)).frame(maxWidth: .infinity, alignment: .leading).padding(.leading, 50)
           }
+        }.alert(isPresented: $bluetoothViewModel.showAlert) {
+            Alert(
+                title: Text("Error"),
+                message: Text(bluetoothViewModel.errorMessage),
+                dismissButton: .default(Text("OK")) {
+                    bluetoothViewModel.disconnectPeripheral()
+                }
+            )
         }
     }
 }
