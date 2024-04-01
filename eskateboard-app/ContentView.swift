@@ -144,6 +144,10 @@ extension BluetoothViewModel: CBPeripheralDelegate {
         enum DataError: Error {
             case invalidSize
         }
+        enum ConnectionError: Error {
+            case powerOff
+            case outOfRange
+        }
         do {
             if data.count == MemoryLayout<Float>.size {
                 let floatValue = data.withUnsafeBytes { $0.load(as: Float.self) }
@@ -154,6 +158,9 @@ extension BluetoothViewModel: CBPeripheralDelegate {
                 switch characteristic.uuid.uuidString {
                 case BluetoothCharacteristicMap.battery.rawValue:
                     skateboardData.battery = floatValue
+                    if (floatValue < 0) {
+                        throw ConnectionError.powerOff
+                    }
                 case BluetoothCharacteristicMap.distanceTravelled.rawValue:
                     skateboardData.distanceTravelled = floatValue
                 case BluetoothCharacteristicMap.speed.rawValue:
@@ -166,8 +173,14 @@ extension BluetoothViewModel: CBPeripheralDelegate {
             } else {
                 throw DataError.invalidSize // Manually throw an error
             }
+        } catch DataError.invalidSize {
+            self.errorMessage = "Invalid data received!"
+            self.showAlert = true
+        } catch ConnectionError.powerOff {
+            self.errorMessage = "Make sure the scooter is powered on."
+            self.showAlert = true
         } catch {
-            self.errorMessage = error.localizedDescription
+            self.errorMessage = "Other error occured, disconnecting..."
             self.showAlert = true
         }
     }
