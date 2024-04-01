@@ -285,5 +285,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ConnectedView(bluetoothViewModel: BluetoothViewModel())
+    ConnectedView(bluetoothViewModel: BluetoothViewModel()).preferredColorScheme(.dark)
 }

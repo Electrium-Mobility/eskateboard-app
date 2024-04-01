@@ -26,5 +26,5 @@ struct BatteryView :View {
 }
 
 #Preview {
-    BatteryView(battery: .constant(35.0), outline: Color.black)
+    BatteryView(battery: .constant(35.0), outline: Color.white).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }
