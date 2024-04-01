@@ -14,7 +14,14 @@ struct SkateboardData {
     var battery: Float // as a percentage
     var distanceTravelled: Float // revolutions per minute
 }
-
+enum ErrorType: String, CaseIterable {
+    case error = "ERROR"
+    case warning = "WARNING"
+}
+struct ErrorObject {
+    var type: ErrorType
+    var message: String
+}
 class BluetoothViewModel : NSObject, ObservableObject {
     private var centralManager: CBCentralManager?
     private var connectedPeripheral: CBPeripheral?
@@ -24,7 +31,7 @@ class BluetoothViewModel : NSObject, ObservableObject {
     @Published var isConnected = false // Track connection status
     @Published var skateboardData = SkateboardData(speed: 0, distanceRemaining: 0, battery: 100, distanceTravelled: 0)
     @Published var showAlert = false
-    @Published var errorMessage: String = ""
+    @Published var errorObject: ErrorObject? = nil
     let expectedCharacteristicsUUIDs: Set<String> = [
         BluetoothCharacteristicMap.battery.rawValue,
         BluetoothCharacteristicMap.distanceRemaining.rawValue,
@@ -38,6 +45,7 @@ class BluetoothViewModel : NSObject, ObservableObject {
         case distanceTravelled = "6043959F-C355-40C3-A069-9E511F335793"
     }
 
+    
     override init() {
         super.init()
         self.centralManager = CBCentralManager(delegate: self, queue: .main)
@@ -59,8 +67,10 @@ class BluetoothViewModel : NSObject, ObservableObject {
     }
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
             // Update your isConnected flag and handle any cleanup
-            self.isConnected = false
+           self.isConnected = false
            self.connectedPeripheral = nil
+        self.showAlert = false;
+        self.errorObject = nil;
             if let error = error {
                 print("Disconnected from \(peripheral.name ?? "") due to error: \(error.localizedDescription)")
             } else {
@@ -94,7 +104,7 @@ extension BluetoothViewModel: CBCentralManagerDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) { // Adjust the timeout duration as needed
             let unexpectedUUIDs = self.receivedCharacteristicsUUIDs.subtracting(self.expectedCharacteristicsUUIDs)
             if !unexpectedUUIDs.isEmpty || self.receivedCharacteristicsUUIDs.isEmpty {
-                self.errorMessage = "Connected to an incompatible device. Missing characteristics."
+                self.errorObject = ErrorObject(type: ErrorType.error, message: "Connected to an incompatible device. Missing characteristics.")
                 self.showAlert = true
             }
         }
@@ -174,13 +184,13 @@ extension BluetoothViewModel: CBPeripheralDelegate {
                 throw DataError.invalidSize // Manually throw an error
             }
         } catch DataError.invalidSize {
-            self.errorMessage = "Invalid data received!"
+            self.errorObject = ErrorObject(type: ErrorType.error, message: "Invalid data received!")
             self.showAlert = true
         } catch ConnectionError.powerOff {
-            self.errorMessage = "Make sure the scooter is powered on."
+            self.errorObject = ErrorObject(type: ErrorType.error, message: "Check if skateboard is powered on.")
             self.showAlert = true
         } catch {
-            self.errorMessage = "Other error occured, disconnecting..."
+            self.errorObject = ErrorObject(type: ErrorType.error, message: "Other error.") 
             self.showAlert = true
         }
     }
@@ -233,10 +243,12 @@ struct ConnectedView: View {
           }
         }.alert(isPresented: $bluetoothViewModel.showAlert) {
             Alert(
-                title: Text("Error"),
-                message: Text(bluetoothViewModel.errorMessage),
+                title: Text(bluetoothViewModel.errorObject?.type.rawValue ?? "No errro"),
+                message: Text(bluetoothViewModel.errorObject?.message ?? "No error"),
                 dismissButton: .default(Text("OK")) {
-                    bluetoothViewModel.disconnectPeripheral()
+                    if bluetoothViewModel.errorObject?.type == ErrorType.error {
+                        bluetoothViewModel.disconnectPeripheral()
+                    }
                 }
             )
         }
