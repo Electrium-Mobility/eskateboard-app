@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct BatteryView :View {
-    @Binding var battery: Double
+    @Binding var battery: Float
     let outline: Color
     @State private var opacity = 0.0
     var body : some View{
         ZStack {
-            Image(systemName: "battery.0").resizable().scaledToFit().font(.headline.weight(.ultraLight)).foregroundColor(outline).background(Rectangle().fill(batteryColor()).scaleEffect(x: battery/100.0,y:1,anchor: .leading)).mask(Image(systemName: "battery.100").resizable().scaledToFit().font(.headline.weight(.ultraLight))).frame(width: 240).padding()
+            Image(systemName: "battery.0").resizable().scaledToFit().font(.headline.weight(.ultraLight)).foregroundColor(outline).background(Rectangle().fill(batteryColor()).scaleEffect(x: CGFloat(battery)/100.0,y:1,anchor: .leading)).mask(Image(systemName: "battery.100").resizable().scaledToFit().font(.headline.weight(.ultraLight))).frame(width: 240).padding()
             
             Text(String(format: "%.1f", battery)+"%").foregroundColor(self.battery > 10 ? .white : .red).animation(nil).padding(.leading,-20)
         }

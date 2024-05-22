@@ -235,9 +235,9 @@ struct ConnectedView: View {
     @State private var fakebattery:Double = 5.0;
     var body: some View {
         VStack(spacing:50) {
-            Speedometer()
-            BatteryView(battery: .constant(fakebattery), outline: Color.white)
-            Slider(value: $fakebattery,in:0.0...100.0).tint(.blue).padding(.top,-70)
+            Speedometer(currentSpeed: $bluetoothViewModel.skateboardData.speed)
+            BatteryView(battery: $bluetoothViewModel.skateboardData.battery, outline: Color.white)
+//            Slider(value: $fakebattery,in:0.0...100.0).tint(.blue).padding(.top,-70)
             
             VStack(alignment: .leading, spacing: 15){
                 HStack {
