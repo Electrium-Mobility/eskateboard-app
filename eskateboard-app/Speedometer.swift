@@ -10,32 +10,31 @@ import SwiftUI
 let MAX_SPEED:Double = 25.0;
 
 struct Speedometer : View {
-    @State var currentSpeed: Double = 0;
+    @Binding var currentSpeed: Float
 
     var body : some View  {
         VStack {
-            Meter(currentSpeed: $currentSpeed)
-            Text(String(currentSpeed)+" km/h").padding(.vertical, 50).font(.system(size: 20))
-            HStack(spacing:25){
-                Button(action: {
-                    
-                    withAnimation(Animation.default.speed(2)) {
-                        if self.currentSpeed < MAX_SPEED {
-                            self.currentSpeed += 1;
-                        }
-                    }
-                }, label: {
-                    Text("Update")
-                })
-                Button(action:{
-                    withAnimation(Animation.default.speed(0.55)) {
-                        self.currentSpeed = 0;
-                    }
-                }
-                       , label: {
-                    Text("Reset")
-                })
-            }.padding(.top, 60)
+            Meter(currentSpeed: Double(currentSpeed))
+            Text(String(format: "%.2f", currentSpeed)+" km/h").padding(.top, 50).font(.system(size: 20))
+//            HStack(spacing:25){
+//                Button(action: {
+//                    withAnimation(Animation.default.speed(2)) {
+//                        if self.currentSpeed < MAX_SPEED {
+//                            self.currentSpeed += 1;
+//                        }
+//                    }
+//                }, label: {
+//                    Text("Update")
+//                })
+//                Button(action:{
+//                    withAnimation(Animation.default.speed(0.55)) {
+//                        self.currentSpeed = 0;
+//                    }
+//                }
+//                       , label: {
+//                    Text("Reset")
+//                })
+//            }.padding(.top, 00)
         }
     }
     
@@ -43,7 +42,7 @@ struct Speedometer : View {
 }
 struct Meter : View {
     let colors = [Color(red: 0.0, green: 1.0, blue:0.0),Color(red: 1.0, green: 0.0, blue:0.0),Color(red: 1.0, green: 0.0, blue:0.0),Color(red: 1.0, green: 0.0, blue:0.0)]
-    @Binding var currentSpeed: Double
+    var currentSpeed: Double
 
 
     var body : some View {
@@ -66,6 +65,7 @@ struct Meter : View {
     }
 }
 
-#Preview {
-    Speedometer()
-}
+//#Preview {
+//    @State var testSpeed: Float = 9.5
+//    Speedometer(currentSpeed: $testSpeed)
+//}
